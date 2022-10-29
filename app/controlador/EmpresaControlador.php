@@ -210,14 +210,15 @@ if (isset($_POST['opcion'])) {
 				$validacion = (isset($_POST['tipoValidacion'])) ? $_POST['tipoValidacion'] : null;
 				$motivo = (isset($_POST['motivo'])) ? $_POST['motivo'] : null;
 				$idValidacion = (isset($_POST['idValidacion'])) ? $_POST['idValidacion'] : null;
-				
+				$idFormacion = (isset($_POST['idFormacion'])) ? $_POST['idFormacion'] : null;
 
 
 				$datos = [
 					"sede" => $sede,
 					"tipoValidacion" => $validacion,
 					"motivo" => $motivo,
-					"idValidacion" => $idValidacion
+					"idValidacion" => $idValidacion,
+					"idFormacion" => $idFormacion
 				];
 
 				$respuesta = new EmpresaControlador();

@@ -447,7 +447,8 @@ $(document).ready(function () {
           sede: sede,
           tipoValidacion: tipoValidacion,
           motivo: motivo,
-          idValidacion: idValidacion
+          idValidacion: idValidacion,
+          idFormacion : idFormacion
         },
       }).done(function (data) {
         opcion2 = "ActualizarValidacion";

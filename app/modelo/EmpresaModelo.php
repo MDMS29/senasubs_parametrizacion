@@ -129,12 +129,13 @@ class EmpresaModelo
 
     static public function EnviarValidacion($datos)
     {
-        $x = conexion::conectar()->prepare("INSERT INTO tbl_validacion(tbl_validacion_ID, tbl_sede_ID, tbl_tipovalidacion_ID, tbl_validacion_MOTIVO, tbl_peticiones_ID)
-            VALUES (null, :sede, :tipoValidacion, :motivo, :idValidacion)");
+        $x = conexion::conectar()->prepare("INSERT INTO tbl_validacion(tbl_validacion_ID, tbl_sede_ID, tbl_tipovalidacion_ID, tbl_validacion_MOTIVO, tbl_peticiones_ID, tbl_formacion_ID)
+            VALUES (null, :sede, :tipoValidacion, :motivo, :idValidacion, :idFormacion)");
         $x->bindParam(":sede", $datos['sede'], PDO::PARAM_INT);
         $x->bindParam(":tipoValidacion", $datos['tipoValidacion'], PDO::PARAM_INT);
         $x->bindParam(":motivo", $datos['motivo'], PDO::PARAM_STR);
         $x->bindParam(":idValidacion", $datos['idValidacion'], PDO::PARAM_STR);
+        $x->bindParam(":idFormacion", $datos['idFormacion'], PDO::PARAM_STR);
         if ($x->execute()) {
             return true;
         } else {
@@ -211,6 +212,7 @@ class EmpresaModelo
             return false;
         }
     }
+
     //ELIMINAR VALIDACION ENVIADA
     static public function ActualizarValidacion($datos)
     {
