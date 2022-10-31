@@ -14,9 +14,14 @@ class EmpresaControlador
 		$respuesta = EmpresaModelo::ListarEmpresa();
 		return $respuesta;
 	}
-	public function ListarPeticiones()
+	public function ListarPeticionesEmpresa()
 	{
-		$respuesta = EmpresaModelo::ListarPeticiones();
+		$respuesta = EmpresaModelo::ListarPeticionesEmpresa();
+		return $respuesta;
+	}
+	public function ListarPeticionesAdmin()
+	{
+		$respuesta = EmpresaModelo::ListarPeticionesAdmin();
 		return $respuesta;
 	}
 	public function ListarSolicitudesAcepODen()
@@ -100,11 +105,15 @@ if (isset($_POST['opcion'])) {
 		$respuesta = $respuesta->ListarEmpresa();
 		echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
 	} else {
-		if ($_POST["opcion"] == "listarPeticiones") {
+		if ($_POST["opcion"] == "listarPeticionesAdmin") {
 			$respuesta = new EmpresaControlador();
-			$respuesta = $respuesta->ListarPeticiones();
+			$respuesta = $respuesta->ListarPeticionesAdmin();
 			echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
-		} else {
+		} if ($_POST["opcion"] == "listarPeticionesEmpresa") {
+			$respuesta = new EmpresaControlador();
+			$respuesta = $respuesta->ListarPeticionesEmpresa();
+			echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
+		}else {
 			if ($_POST["opcion"] == "listarSolicitudesAcepODen") {
 				$respuesta = new EmpresaControlador();
 				$respuesta = $respuesta->ListarSolicitudesAcepODen();

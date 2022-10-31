@@ -74,7 +74,7 @@ $(document).ready(function () {
     ajax: {
       url: "app/controlador/EmpresaControlador.php",
       method: "POST",
-      data: { opcion: "listarPeticiones" },
+      data: { opcion: "listarPeticionesAdmin" },
       dataSrc: "",
     },
     columns: [
@@ -128,6 +128,8 @@ $(document).ready(function () {
         },
         { data: "sede" },
         { data: "tipoValidacion" },
+        { data: "formacion" },
+        { data: "programa" },
         { data: "motivoValidacion" },
       ],
     }
@@ -158,6 +160,8 @@ $(document).ready(function () {
       },
       { data: "sede" },
       { data: "tipoValidacion" },
+      { data: "formacion" },
+      { data: "programa" },
       { data: "motivoValidacion" },
     ],
   });
@@ -173,7 +177,7 @@ $(document).ready(function () {
     ajax: {
       url: "app/controlador/EmpresaControlador.php",
       method: "POST",
-      data: { opcion: "listarPeticiones" },
+      data: { opcion: "listarPeticionesEmpresa" },
       dataSrc: "",
     },
     columns: [

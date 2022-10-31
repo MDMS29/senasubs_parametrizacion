@@ -17,7 +17,18 @@ class EmpresaModelo
         }
     }
 
-    static public function ListarPeticiones()
+    static public function ListarPeticionesEmpresa()
+    { {
+            $x = Conexion::conectar()->prepare("SELECT P.tbl_peticiones_ID as idPeticiones, P.tbl_peticiones_CantAPRENDIZES as cantidadAprendizes, 
+            F.tbl_formacion_TIPO as formacion, PR.tbl_programa_NOMBRE as programa, P.tbl_peticiones_MOTIVO as motivo,
+            P.tbl_peticiones_FECHA as fecha, P.tbl_peticiones_HORA as hora, P.tbl_peticiones_NEMPRESA as nombreEmpresa 
+            FROM tbl_peticiones as P inner join tbl_formacion as F on P.tbl_formacion_ID= F.tbl_formacion_ID
+            inner join tbl_programa as PR on P.tbl_programa_ID= PR.tbl_programa_ID");
+            $x->execute();
+            return $x->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+    static public function ListarPeticionesAdmin()
     { {
             $x = Conexion::conectar()->prepare("SELECT P.tbl_peticiones_ID as idPeticiones, P.tbl_peticiones_CantAPRENDIZES as cantidadAprendizes, 
             F.tbl_formacion_TIPO as formacion, PR.tbl_programa_NOMBRE as programa, P.tbl_peticiones_MOTIVO as motivo,
@@ -42,8 +53,11 @@ class EmpresaModelo
     static public function ListarValidacion()
     { {
             $x = Conexion::conectar()->prepare("SELECT V.tbl_validacion_ID as idValidacion, V.tbl_validacion_MOTIVO as motivoValidacion, 
-            TV.tbl_tipovalidacion_TIPO as tipoValidacion, S.tbl_sede_NOMBRE as sede
-            FROM tbl_validacion as V inner join tbl_sede as S on V.tbl_sede_ID = S.tbl_sede_ID
+            TV.tbl_tipovalidacion_TIPO as tipoValidacion, S.tbl_sede_NOMBRE as sede, F.tbl_formacion_TIPO as formacion, PR.tbl_programa_NOMBRE as programa
+            FROM tbl_validacion as V inner join tbl_sede as S on V.tbl_sede_ID = S.tbl_sede_ID 
+            inner join tbl_peticiones as P on V.tbl_peticiones_ID = P.tbl_peticiones_ID 
+            inner join tbl_programa as PR on P.tbl_programa_ID = PR.tbl_programa_ID
+            inner join tbl_formacion as F on P.tbl_formacion_ID = F.tbl_formacion_ID
             inner join tbl_tipovalidacion as TV on V.tbl_tipovalidacion_ID = TV.tbl_tipovalidacion_ID");
             $x->execute();
             return $x->fetchAll(PDO::FETCH_ASSOC);

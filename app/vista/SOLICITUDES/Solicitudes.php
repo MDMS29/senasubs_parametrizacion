@@ -123,9 +123,11 @@
                         <table class="table" id="tablaPeticionesEnviadasAdmins" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                <th scope="col">#</th>
                                     <th scope="col">SEDE</th>
                                     <th scope="col">VALIDACION</th>
+                                    <th scope="col">FORMACION</th>
+                                    <th scope="col">PROGRAMA</th>
                                     <th scope="col">MOTIVO</th>
                                 </tr>
                             </thead>
